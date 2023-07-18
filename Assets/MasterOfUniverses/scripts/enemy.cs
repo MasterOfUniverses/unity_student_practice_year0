@@ -21,6 +21,7 @@ public class enemy : MonoBehaviour
     private float destroy_len = 150;
     public void Set_target(GameObject target, float dl)
     {
+        
         player = target;
         player_controller = player.GetComponent<PlayerController>();
         player_position = player.GetComponent<Transform>();

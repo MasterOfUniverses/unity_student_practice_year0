@@ -156,7 +156,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f4f278eacd4e84eb0c7f0caba78457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonus_spheres: []
+  bonus_spheres:
+  - {fileID: 1636890530940204519, guid: ab040f7e4443e9c4d946289bcdcf173f, type: 3}
+  - {fileID: 1636890530940204519, guid: ab040f7e4443e9c4d946289bcdcf173f, type: 3}
+  - {fileID: 1498326270753961437, guid: 13b4840c124c65a49b8e6a8d4d25106b, type: 3}
+  - {fileID: 1498326270753961437, guid: 13b4840c124c65a49b8e6a8d4d25106b, type: 3}
+  - {fileID: 1498326270753961437, guid: 13b4840c124c65a49b8e6a8d4d25106b, type: 3}
+  - {fileID: 1498326270753961437, guid: 13b4840c124c65a49b8e6a8d4d25106b, type: 3}
+  - {fileID: 1498326270753961437, guid: 13b4840c124c65a49b8e6a8d4d25106b, type: 3}
+  - {fileID: 1498326270753961437, guid: 13b4840c124c65a49b8e6a8d4d25106b, type: 3}
+  - {fileID: 1498326270753961437, guid: 13b4840c124c65a49b8e6a8d4d25106b, type: 3}
+  - {fileID: 1498326270753961437, guid: 13b4840c124c65a49b8e6a8d4d25106b, type: 3}
 --- !u!50 &5991817047498617858
 Rigidbody2D:
   serializedVersion: 4

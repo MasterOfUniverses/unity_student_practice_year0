@@ -135,10 +135,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 721778613549848082, guid: 506808cbf405d954780a1a869b0fca59, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4803394546559161787, guid: 506808cbf405d954780a1a869b0fca59, type: 3}
       propertyPath: skill_menu
       value: 
       objectReference: {fileID: 2071410649}
+    - target: {fileID: 4803394546559161787, guid: 506808cbf405d954780a1a869b0fca59, type: 3}
+      propertyPath: skills_count.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803394546559161787, guid: 506808cbf405d954780a1a869b0fca59, type: 3}
+      propertyPath: skills_cooldown.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6620863082305452023, guid: 506808cbf405d954780a1a869b0fca59, type: 3}
       propertyPath: time_text
       value: 

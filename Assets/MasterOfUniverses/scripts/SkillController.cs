@@ -112,7 +112,7 @@ public class SkillController : MonoBehaviour
                 {
                     curr_cooldown[i] = skills[i].get_cooldown();
                     GameObject[] targets = GameObject.FindGameObjectsWithTag("enemy");
-                    for (int j = 0; j < skills[i].get_count(); j++)
+                    for (int j = 0; j < skills[i].get_count() && j<targets.Length; j++)
                     {
                         GameObject this_missile = Instantiate(skills[i].get_animator());
                         this_missile.gameObject.transform.position = gameObject.transform.position;

@@ -19,7 +19,8 @@ public class SpawnerController : MonoBehaviour
     [SerializeField]
     public int destroy_radius = 250;
 
-    public int max_enemies = 20;
+    public int enemy_limits = 20;
+    public int max_enemies = 5;
     public int curr_enemies = 0;
     private float timer;
     private int seconds = 0;
@@ -70,7 +71,15 @@ public class SpawnerController : MonoBehaviour
         }
         if (timer > 5)
         {
-            max_enemies += (int)((5+0.2f*max_enemies)/2);
+            if (max_enemies < enemy_limits)
+            {
+                max_enemies += (int)((5 + 0.2f * max_enemies) / 2);
+            }
+            else
+            {
+                max_enemies = 5;
+                curr_enemies = 0;
+            }
             timer -= 5; 
             for (int i = 0; i < max_enemies / 20; i++)
             {
@@ -91,4 +100,5 @@ public class SpawnerController : MonoBehaviour
         }
 
     }
+
 }

@@ -15,6 +15,7 @@ public class missile : MonoBehaviour
     private float speed=50;
     public void Set_target(GameObject target,float income)
     {
+        //Debug.Log(target.gameObject.transform.position);
         this.target = target;
         damage = income;
     }
@@ -22,19 +23,19 @@ public class missile : MonoBehaviour
     void Start()
     {
         start_point = gameObject.transform.position;
-        target_pos = target.gameObject.transform.position.normalized;
-        alpha = Mathf.Acos(target_pos.x);
-        if (target_pos.y < 0) alpha += 180;
-        alpha = (alpha+360) % 360;
-        gameObject.transform.rotation = Quaternion.Euler(0f, 0f, alpha);
+        target_pos = (start_point - target.gameObject.transform.position).normalized;
+        
+        alpha =Mathf.Rad2Deg*(Mathf.Acos(target_pos.x));
+        if (target_pos.y < 0) alpha = - alpha;
+        alpha = (alpha+180) % 360;
+        gameObject.transform.rotation = Quaternion.Euler(0,0,alpha);
         gameObject.transform.position += target_pos * 2;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position += target_pos * Time.deltaTime * speed;
+        gameObject.transform.position -= target_pos * Time.deltaTime * speed;
         if ((gameObject.transform.position - start_point).magnitude > 150)
         {
             Destroy(gameObject);
