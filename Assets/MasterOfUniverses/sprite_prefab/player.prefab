@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6620863082305452023}
   - component: {fileID: 2297281187047525161}
   - component: {fileID: 6244706727070576437}
+  - component: {fileID: 4803394546559161787}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -124,8 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plane_prefab: {fileID: 893337944387774995, guid: 1d1b1c6e8d010f545ba69116b7fcf8a5, type: 3}
-  render_radius: 2
+  render_radius: 5
   rb: {fileID: 0}
+  time_text: {fileID: 0}
 --- !u!114 &6620863082305452023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +205,29 @@ CapsuleCollider2D:
   m_Offset: {x: 0.010387301, y: -0.010386944}
   m_Size: {x: 1.9469705, y: 5.001048}
   m_Direction: 0
+--- !u!114 &4803394546559161787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721778613549848082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd0bd6ba55c7f949a0887b82cac1bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill_menu: {fileID: 0}
+  max_choice: 2
+  skills_anim:
+  - {fileID: 3640677574360045852, guid: 23fbf360d852e50448022ca53e998f82, type: 3}
+  skills_name:
+  - fireball
+  skills_count: 01000000
+  skills_cooldown:
+  - 0.5
+  skills_damage:
+  - 100
 --- !u!1 &6762426357851417188
 GameObject:
   m_ObjectHideFlags: 0
