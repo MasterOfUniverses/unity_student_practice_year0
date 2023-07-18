@@ -26,7 +26,12 @@ public class PlayerController : MonoBehaviour
     private float hp_max = 200;
     private float hp_current = 200;
     private SkillController skills_player;
-    float timer;
+    private float timer;
+    private float magnet_length=20;
+    public float get_magnet_length()
+    {
+        return magnet_length;
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -92,7 +97,19 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.name.Contains("enemy"))
         {
-
+            if (other.gameObject.name.Contains("enemy_small"))
+            {
+                hp_current -= 20;
+                other.gameObject.GetComponent<enemy>().take_damage(20);
+            }else if (other.gameObject.name.Contains("enemy_medium"))
+            {
+                other.gameObject.GetComponent<enemy>().take_damage(20);
+                hp_current -= 80;
+            }
+            if(hp_current <= 0)
+            {
+                Debug.Log("you're dead");
+            }
         }else if (other.gameObject.name.Contains("hp"))
         {
             hp_current = Mathf.Min(new float[] { hp_current + 50, hp_max});

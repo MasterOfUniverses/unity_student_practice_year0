@@ -5,6 +5,7 @@ using System.Numerics;
 using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -44,6 +45,13 @@ public class SkillController : MonoBehaviour
             return level;
         }
         public string get_name() { return name; }
+        public float get_cooldown() { return cooldown; }
+
+        public float get_count() { return count;}
+
+        public GameObject get_animator() { return animator; }
+
+        public float get_damage() { return damage; }
 
     }
     [SerializeField]
@@ -61,6 +69,7 @@ public class SkillController : MonoBehaviour
     [SerializeField]
     private List<float> skills_damage;
 
+    private List<float> curr_cooldown= new List<float>();
     protected List<Skill> skills=new List<Skill>();
     private List<TMP_Text> skill_buttons;
     private System.Random rnd = new System.Random();
@@ -73,6 +82,7 @@ public class SkillController : MonoBehaviour
         {
             Skill new_skill = new Skill(skills_name[i], skills_anim[i], skills_count[i], skills_cooldown[i], skills_damage[i]);
             skills.Add(new_skill);
+            curr_cooldown.Add(skills_cooldown[i]);
         }
         skill_menu.enabled = false;
         skill_buttons = new List<TMP_Text>(skill_menu.GetComponentsInChildren<TMP_Text>());
@@ -93,13 +103,31 @@ public class SkillController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        for(int i=0;i<skills.Count;i++)
+        {
+            if (skills[i].get_lvl() != 0)
+            {
+                curr_cooldown[i] -= Time.deltaTime;
+                if (curr_cooldown[i] <= 0)
+                {
+                    curr_cooldown[i] = skills[i].get_cooldown();
+                    GameObject[] targets = GameObject.FindGameObjectsWithTag("enemy");
+                    for (int j = 0; j < skills[i].get_count(); j++)
+                    {
+                        GameObject this_missile = Instantiate(skills[i].get_animator());
+                        this_missile.gameObject.transform.position = gameObject.transform.position;
+                        this_missile.GetComponent<missile>().Set_target(targets[rnd.Next(0, targets.Length)], skills[i].get_damage());
+                        
+                    }
+                }
+            }
+        }
     }
 
     public void Show_new_skills()
     {
         if (is_max_lvl) return;
-        Debug.Log("Show new skills");
+        //Debug.Log("Show new skills");
         List<int> vacation_skills=new List<int>();
         numbers_for_buttons.Clear();
         for(int i = 0; i < skill_buttons.Count/2; i++)
